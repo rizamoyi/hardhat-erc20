@@ -57,11 +57,12 @@ contract ERC20 {
 
     return true;
   }
+
+  function _mint(address to, uint256 amount) internal {
+    require(to != address(0), "ERC20: approve to the zero address");
+
+    totalSupply += amount;
+    balanceOf[to] += amount;
+  }
 }
 
-function _mint(address to, uint256 amount) internal {
-  require(to != address(0), "ERC20: approve to the zero address");
-
-  totalSupply += amount;
-  balanceOf[to] += amount;
-}
