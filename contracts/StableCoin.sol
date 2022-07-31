@@ -9,15 +9,15 @@ contract StableCoin is ERC20 {
     uint256 private constant ETH_IN_USD_PRICE = 2000;
     uint256 public feeRatePercentage;
 
-    constructor(uint256 _feeRatePercantage) ERC("Stablecoin", "STC") {
+    constructor(uint256 _feeRatePercantage) ERC20("Stablecoin", "STC") {
         feeRatePercentage = _feeRatePercantage;
     }
 
     function mint() external payable {
         uint256 fee = _getFee(msg.value);
-        uint245 remainingEth = msg.value - fee;
+        uint256 remainingEth = msg.value - fee;
 
-        uint256 mintStableCoinAMount = msg.value * ETH_IN_USD_PRICE;
+        uint256 mintStableCoinAmount = msg.value * ETH_IN_USD_PRICE;
         _mint(msg.sender, mintStableCoinAmount);
     }
 
